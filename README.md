@@ -68,12 +68,12 @@ b. Line 63: Number of clusters. Either one of these can be used:
 i. algorithm-defined number of clusters (using Elbow method)
 Ii. user-defined number of clusters
 
-c. Line 216: Computing distance metric using the 'Euclidean' method
+c. Line 216: Computing distance metric using the 'Euclidean' method.
           Using 'complete' method to compute linkageTree 
 
 d. Line 246: Color Threshold for the dendrogram is computed 
 
-e. Line 251: dendrogram (linkageTree,100,'ColorThreshold', 4)
+e. Line 251: dendrogram(linkageTree,100,'ColorThreshold', threshold);
 Number of clusters in the dendrogram can be set by user
 
 The following message will appear once the analysis is completed: "Analysis Completed"
