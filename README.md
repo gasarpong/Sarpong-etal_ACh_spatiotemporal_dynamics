@@ -12,7 +12,6 @@ Program: hierarchical_clustering_algorithm.m
 
 This program enables clustering of subregions (or ROIs) using a Hierarchical Clustering algorithm. 
 In brief, clustering is performed following the steps below:
-
 Step 1: Dimensionality reduction is performed using Principal Component Analysis (PCA)
 Step 2: Hierarchical clustering is applied on dimensionally reduced data.
 
@@ -36,10 +35,10 @@ addpath(genpath('your_directory_path'));
 
 a. Open hierarchical_clustering_algorithm.m in MATLAB.
 
-B. Click Run (or press F5).
+b. Click Run (or press F5).
 
 Follow the prompts in the command window and select your input data.
-Note that the input file must contain only the dataset for the desired time window of analysis.
+Note that the input file must contain only the dataset of the desired time window of analysis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -77,7 +76,7 @@ e. Line 251: dendrogram(linkageTree,100,'ColorThreshold', threshold);
 Number of clusters in the dendrogram can be set by user
 
 The following message will appear once the analysis is completed: "Analysis Completed"
-An example dataset ("All_ROIs_clustering") is included.
+An example dataset ("All_ROIs_clustering") is included. See demo_data folder.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,7 +97,7 @@ Behavioral Data Analysis
       % 6) Lick occurrences during No_Reward_Time  ± lickDuration (3s etc) period 
       % 7) Lick occurrences during first 5s of each trial (user-defined)
       % 8) RewardRate for reward/noReward trials is computed
-      % 9 ) Lick Rate for each 100ms during Reward_Time  ± lickDuration (3s) is found
+      % 9) Lick Rate for each 100ms during Reward_Time  ± lickDuration (3s) is found
  
  % A Single file or multiple files can be analyzed simultaneously 
 
@@ -114,4 +113,4 @@ Behavioral Data Analysis
  % A Single file or multiple files can be analyzed simultaneously 
  % All results are saved to an Output Excel file 
 
- An example dataset ("Y-maze_behavioral_data") is included.
+ An example dataset ("Y-maze_behavioral_data") is included. See demo_data folder.
