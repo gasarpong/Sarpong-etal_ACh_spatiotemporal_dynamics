@@ -11,7 +11,7 @@
       % 3) Each trial's Velocity/ LickRate results are written output excel files 
 
       
- % A Single file or multiple simultaneous files can be analyzed with ths program.
+ % A single file or multiple files can be analyzed simultaneously with this program.
  % All results are saved to output Excel files.
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
