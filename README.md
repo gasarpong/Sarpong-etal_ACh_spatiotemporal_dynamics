@@ -83,7 +83,9 @@ An example dataset ("All_ROIs_clustering") is included. See "demo_data" folder.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 Behavioral Data Analysis
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 1. Program: Ymaze_Reward_noRewardTrialResults.m
