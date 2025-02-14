@@ -76,7 +76,7 @@ e. Line 251: dendrogram (linkageTree,100,'ColorThreshold', 4)
 Number of clusters in the dendrogram can be set by user
 
 The following message will appear once the analysis is completed: "Analysis Completed"
-
+An example dataset ("All_ROIs_clustering") is included.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,3 +112,5 @@ Behavioral Data Analysis
       
  % A Single file or multiple files can be analyzed simultaneously 
  % All results are saved to an Output Excel file 
+
+ An example dataset ("Y-maze_behavioral_data") is included.
