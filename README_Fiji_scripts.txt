@@ -28,7 +28,7 @@ The macro "Split Image Into ROIs" splits the imaging field into equally sized gr
 Plugins >> Macros >> Startup Macros. Click save.
 2. To apply the changes, close and reopen Fiji software.
 3. Load your movie file and run the macro 
-Plugins >> Macros >> SelectROIs
+Plugins >> Macros >> Split Image Into ROIs
 4. Enter your desired number of grids
 
 To view the time-series data of all selected ROIs, run the macro "Plot All Z-Axis profiles"
