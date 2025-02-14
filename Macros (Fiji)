@@ -1,9 +1,10 @@
 This file contain macros for splitting an imaging field of view into equally-sized grids for trace extraction and analysis.
 See the README_Fiji_scripts for instructions on how to run this macro in Fiji.
 
+// Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
+
 macro "Split Image Into ROIs" {
 
-   // Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
    // This macro splits splits the imaging field into equally sized grids of nxn tiles, where n is number of grids chosen by the user.
  
 	ROInum = roiManager("count");
