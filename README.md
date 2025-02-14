@@ -4,9 +4,9 @@ Last update: 2025/2/14
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Imaging data Analysis: Hierarchical Clustering
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Program: hierarchical_clustering_algorithm.m
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This program enables clustering of subregions (or ROIs) using a Hierarchical Clustering algorithm. 
 In brief, clustering is performed following the steps below:
