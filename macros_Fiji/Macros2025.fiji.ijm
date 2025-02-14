@@ -1,6 +1,10 @@
+This file contain macros for splitting an imaging field of view into equally-sized grids for trace extraction and analysis.
+See the README_Fiji_scripts for instructions on how to run this macro in Fiji.
+
+// Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
+
 macro "Split Image Into ROIs" {
 
-   // Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
    // This macro splits splits the imaging field into equally sized grids of nxn tiles, where n is number of grids chosen by the user.
  
 	ROInum = roiManager("count");
@@ -37,8 +41,6 @@ macro "Split Image Into ROIs" {
 
 
 macro "Plot All Z-Axis Profiles"{  
-   
-   // Written by Kavinda Liyanagama on 2023 - 03 - 07 
    
    // This macro adds Z-Axis profiles of all ROIs to an output window
    // Selected Image should be split into ROIs before running this macro. 
@@ -131,4 +133,3 @@ macro "Plot All Z-Axis Profiles"{
   		} 
     }
 }
-
