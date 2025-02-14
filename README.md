@@ -71,7 +71,7 @@ Ii. user-defined number of clusters
 c. Line 216: Computing distance metric using the 'Euclidean' method
           Using 'complete' method to compute linkageTree 
 
-d. Line 246: ColorThreshold for the dendrogram is computed 
+d. Line 246: Color Threshold for the dendrogram is computed 
 
 e. Line 251: dendrogram (linkageTree,100,'ColorThreshold', 4)
 Number of clusters in the dendrogram can be set by user
