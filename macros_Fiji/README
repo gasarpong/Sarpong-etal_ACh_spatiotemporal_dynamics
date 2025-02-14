@@ -24,12 +24,13 @@ Instructions for use:
 
 The macro "Split Image Into ROIs" splits the imaging field into equally sized grids of nxn tiles, where n is number of grids chosen by the user.
 
-1. For installation and use, copy and paste the macros into "Startup Macros" in Fiji.
+1. Ensure you have Fiji installed (http://imagej.net/Fiji)
+2. For installation and use, copy and paste the macros into "Startup Macros" in Fiji.
 Plugins >> Macros >> Startup Macros. Click save.
-2. To apply the changes, close and reopen Fiji software.
-3. Load your movie file and run the macro 
+3. To apply the changes, close and reopen Fiji software.
+4. Load your movie file and run the macro 
 Plugins >> Macros >> Split Image Into ROIs
-4. Enter your desired number of grids
+5. Enter your desired number of grids
 
 To view the time-series data of all selected ROIs, run the macro "Plot All Z-Axis profiles"
 Plugins >> Macros >> Plot All Z-Axis Profiles
