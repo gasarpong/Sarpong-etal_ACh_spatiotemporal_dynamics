@@ -16,7 +16,7 @@ function Ymaze_Reward_noRewardTrialResults()
       % 8) RewardRate for reward/noReward trials is computed
       % 9 ) Lick Rate for each 100ms during Reward_Time  ± lickDuration (3s) is computed
  
- % Single file or multiple simultaneous files can be analyzed with ths program.
+ % A single file or multiple files can be analyzed simultaneously with ths program.
  % All results are saved to output Excel files.
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
