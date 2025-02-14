@@ -3,17 +3,16 @@
 Last update: 2025/2/14
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 Imaging data Analysis: Hierarchical Clustering
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 Program: hierarchical_clustering_algorithm.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This program enables clustering of subregions (or ROIs) using a Hierarchical Clustering algorithm. 
 In brief, clustering is performed following the steps below:
-Step 1: Dimensionality reduction is performed using Principal Component Analysis (PCA)
-Step 2: Hierarchical clustering is applied on dimensionally reduced data.
+
+a. Step 1: Dimensionality reduction is performed using Principal Component Analysis (PCA)
+
+b. Step 2: Hierarchical clustering is applied on dimensionally reduced data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -76,13 +75,12 @@ e. Line 251: dendrogram(linkageTree,100,'ColorThreshold', threshold);
 Number of clusters in the dendrogram can be set by user
 
 The following message will appear once the analysis is completed: "Analysis Completed"
-An example dataset ("All_ROIs_clustering") is included. See demo_data folder.
+An example dataset ("All_ROIs_clustering") is included. See "demo_data" folder.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 Behavioral Data Analysis
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 1. Program: Ymaze_Reward_noRewardTrialResults.m
@@ -113,4 +111,4 @@ Behavioral Data Analysis
  % A Single file or multiple files can be analyzed simultaneously 
  % All results are saved to an Output Excel file 
 
- An example dataset ("Y-maze_behavioral_data") is included. See demo_data folder.
+ An example dataset ("Y-maze_behavioral_data") is included. See "demo_data" folder.
