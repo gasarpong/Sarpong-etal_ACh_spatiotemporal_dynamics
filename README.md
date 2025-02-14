@@ -3,7 +3,9 @@
 Last update: 2025/2/14
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 Imaging data Analysis: Hierarchical Clustering
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Program: hierarchical_clustering_algorithm.m
