@@ -10,9 +10,9 @@ Program: hierarchical_clustering_algorithm.m
 This program enables clustering of subregions (or ROIs) using a Hierarchical Clustering algorithm. 
 In brief, clustering is performed following the steps below:
 
-a. Step 1: Dimensionality reduction is performed using Principal Component Analysis (PCA)
+Step 1: Dimensionality reduction is performed using Principal Component Analysis (PCA)
 
-b. Step 2: Hierarchical clustering is applied on dimensionally reduced data.
+Step 2: Hierarchical clustering is applied on dimensionally reduced data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
