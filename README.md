@@ -10,10 +10,11 @@ Imaging data Analysis: Hierarchical Clustering
 
 Program: hierarchical_clustering_algorithm.m
 
-This program enables clustering of subregions (or ROIs) using a Hierarchical Clustering algorithm. In brief, clustering is performed following the steps below:
+This program enables clustering of subregions (or ROIs) using a Hierarchical Clustering algorithm. 
+In brief, clustering is performed following the steps below:
 
- % Step 1: Dimensionality reduction is performed using Principal Component Analysis (PCA)
- % Step 2: Hierarchical clustering is applied on dimensionally reduced data.
+Step 1: Dimensionality reduction is performed using Principal Component Analysis (PCA)
+Step 2: Hierarchical clustering is applied on dimensionally reduced data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
