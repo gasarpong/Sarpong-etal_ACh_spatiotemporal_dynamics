@@ -39,7 +39,7 @@ macro "Split Image Into ROIs" {
 
 macro "Plot All Z-Axis Profiles"{  
    
-   // Written by Kavinda Liyanagama on 2023 - 03 - 07 
+   // Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
    
    // This macro adds Z-Axis profiles of all ROIs to an output window
    // Selected Image should be split into ROIs before running this macro. 
