@@ -1,0 +1,137 @@
+This file contain macros for splitting an imaging field of view into equally-sized grids for trace extraction and analysis.
+See the README_Fiji_scripts for instructions on how to run this macro in Fiji.
+
+macro "Split Image Into ROIs" {
+
+   // Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
+   // This macro splits splits the imaging field into equally sized grids of nxn tiles, where n is number of grids chosen by the user.
+ 
+	ROInum = roiManager("count");
+    if (ROInum> 0) {
+	  roiManager("Deselect");
+	  roiManager("Delete");
+    }
+
+	Dialog.create("Input Dialog");
+	n=10;
+	Dialog.addNumber("How many divisions (e.g., 2 means quarters)?", n);
+	Dialog.show();
+	n= Dialog.getNumber();
+	
+	id = getImageID(); 
+	width = getWidth(); 
+	height = getHeight(); 
+	tileWidth = width / n; 
+	tileHeight = height / n; 
+
+	for (y = 0; y < n; y++) { 
+  		offsetY = y * height / n; 
+  		
+  		for (x = 0; x < n; x++) { 
+     		offsetX = x * width / n; 
+     		selectImage(id); 
+     		makeRectangle(offsetX, offsetY, tileWidth, tileHeight); 
+    		roiManager("Add");
+  		} 
+	}
+	roiManager("show all with labels");
+
+}
+
+
+macro "Plot All Z-Axis Profiles"{  
+   
+   // Written by Kavinda Liyanagama on 2023 - 03 - 07 
+   
+   // This macro adds Z-Axis profiles of all ROIs to an output window
+   // Selected Image should be split into ROIs before running this macro. 
+	 	 
+      
+    colors =newArray("#000000","#4363d8", "#e6194B", "#3cb44b", "#f58231","#911eb4", "#42d4f4 " ,"#f032e6","#a9a9a9","#800000","#ffe119", "#808000", "#9A6324","#bfef45","#469990","#000075","#fabed4","#ffd8b1","#aaffc3","#dcbeff","#fffac8","#000000","#4363d8", "#e6194B", "#3cb44b", "#f58231","#911eb4", "#42d4f4 " ,"#f032e6","#a9a9a9","#800000","#ffe119","#808000", "#9A6324","#bfef45","#469990","#000075","#fabed4","#ffd8b1","#aaffc3","#dcbeff","#fffac8")
+    
+	ROInum = roiManager("count");
+    
+    if (ROInum== 0) {
+	  showMessage("Add ROIs to ROI manager before running the program");
+	  exit;
+    }
+	
+	IMG = getImageID;
+	IMGname = getInfo("image.filename");
+    
+	
+	selectImage(IMG);
+    Stack.setChannel(1); // Set the channel to read fluorescence data
+    run("Select All");
+	
+	run("Plot Z-axis Profile");
+    Plot.getValues(xpoints, ypoints);
+    close();
+    Array.getStatistics(xpoints, xMin0, xMax0, ymean, ystdDev);      
+    
+    IMGNew=0; 
+    setBatchMode(true); // The interpreter enters batch mode and images are not displayed, allowing the macro to run up to 20 times faster
+    
+    yMin0 =0; yMax0=0;
+    
+    for (r = 0; r < ROInum; r++) {  // Loop through each ROI
+
+ 	  selectImage(IMG);  	  
+	  roiManager("Select", r);   // Select current ROI
+ 	
+	  run("Plot Z-axis Profile"); 
+      Plot.getValues(xpoints, ypoints);
+   
+      close();  // Close window that has Z-Axis profile 
+    	
+      imageName = "New Plot " + IMGname +"_ROIs";
+    
+      if (IMGNew== 0) {
+      	
+       		run("Profile Plot Options...", "width=900 height=600 fixed");
+       		call("ij.gui.ImageWindow.setNextLocation", 500, 50) ;
+       		
+  	   		Plot.create(imageName, "Slice", "Mean", xpoints, ypoints); // Generate a plot and adds the first signal
+  	   		Array.getStatistics(ypoints, yMin0, yMax0, mean, stdDev);
+  	   		
+       		title = "ROI - "+ toString(r+1);
+ 	   		Plot.setColor(colors[0]);
+ 	   		Plot.setLegend(title, "top-right")
+ 	   		Plot.setLimitsToFit();
+       		IMGNew= getImageID();	
+	
+  		}
+  		else{
+  			
+  			Array.getStatistics(ypoints, yMin, yMax, mean, stdDev);
+  			if (yMin < yMin0){
+  				yMin0 = yMin;
+  			}
+  			
+  			if (yMax > yMax0){
+  				yMax0 = yMax;
+  			}
+  			
+  	  		selectImage(IMGNew);
+  	  		nObjects = Plot.getNumObjects;
+  	  		
+  	  		title = "ROI - "+ toString(r+1);
+  	  
+      		if (nObjects < lengthOf(colors)){
+    	 		Plot.setColor(colors[nObjects]);
+      		}
+      		else {
+    			Plot.setColor("black");
+      		}
+    	
+      		Plot.add("line", xpoints, ypoints, title);  // Add signals to the generated plot
+      		Plot.setLimitsToFit();
+      		Plot.setLegend("", "top-right");   
+      		
+      		if (r == (ROInum-1)) {
+      			Plot.setLimits(xMin0, xMax0, (yMin0-(abs(yMin0)*0.1)), (yMax0+ yMax0*0.1));
+      		}
+  		} 
+    }
+}
+
