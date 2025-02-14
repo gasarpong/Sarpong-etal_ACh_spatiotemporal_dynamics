@@ -1,14 +1,15 @@
 macro "Split Image Into ROIs" {
 
    // Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
+   
    // This macro splits 2-photon TIFFs into squares  or nxn tiles, where n is chosen by the user.
  
-	ROInum = roiManager("count");
+       ROInum = roiManager("count");
 	
-    if (ROInum> 0) {
+        if (ROInum> 0) {
 	  roiManager("Deselect");
 	  roiManager("Delete");
-    }
+        }
 
 	Dialog.create("Input Dialog");
 	n=10;
