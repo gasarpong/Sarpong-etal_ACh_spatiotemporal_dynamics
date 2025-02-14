@@ -17,7 +17,7 @@ This program enables clustering of subregions (or ROIs) using a Hierarchical Clu
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-1. Instructions for the code:
+1. Instructions for using the code:
 
 a. Ensure you have MATLAB installed.
 
