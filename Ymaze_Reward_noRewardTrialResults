@@ -12,7 +12,7 @@ function Ymaze_Reward_noRewardTrialResults()
       % 4) Number of Rewarded trials / Total trials  for each session
       % 5) Lick occurrences during Reward_Time ± lickDuration (3s etc) period 
       % 6) Lick occurrences during No_Reward_Time  ± lickDuration (3s etc) period 
-      % 7) Lick occurrences during first 3s of each trial 
+      % 7) Lick occurrences during first 5s of each trial 
       % 8) RewardRate for reward/noReward trials is computed
       % 9 ) Lick Rate for each 100ms during Reward_Time  ± lickDuration (3s) is computed
  
@@ -25,8 +25,8 @@ function Ymaze_Reward_noRewardTrialResults()
   clearAllMemoizedCaches; % This MATLAB function clears caches for all MemoizedFunction objects
   
   rewardDuration =1; % Reward Duration
-  lickDuration = 10;  % Reward_Time ± lickDuration (3s etc) is considered to show lick occurrences 
-  selectedDuration =20 ;  % This duration is considered to check lickrate 
+  lickDuration = 5;  % Reward_Time ± lickDuration (3s etc) is considered to show lick occurrences 
+  selectedDuration =10 ;  % This duration is considered to check lickrate 
   blockSize = 2; % Average durations of each 3 trials to compute average lick 
  
   %  Open file and take files' name and path  
