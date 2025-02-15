@@ -4,7 +4,7 @@
  
  % Developed by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
  
- % This program analyzes the data and generates the following plots 
+ % This program analyzes behavioral data and generates the following plots 
  
       % 1) 'Reward' type or 'No Reward' type  
       % 2) Trial Duration for each trial
