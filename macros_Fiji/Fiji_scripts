@@ -1,6 +1,6 @@
 Please refer to the README file in this folder for instructions on how to install and use the macros.
 
-// Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
+// Developed by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
 
 macro "Split Image Into ROIs" {
    
@@ -42,7 +42,7 @@ macro "Split Image Into ROIs" {
 
 macro "Plot All Z-Axis Profiles"{  
    
-   // Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
+   // Developed by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
    
    // This macro adds Z-Axis profiles of all ROIs to an output window
    // Selected Image should be split into ROIs before running this macro. 
