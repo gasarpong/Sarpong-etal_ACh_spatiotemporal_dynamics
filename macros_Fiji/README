@@ -35,3 +35,5 @@ Plugins >> Macros >> Split Image Into ROIs
 To view the time-series data of all selected ROIs, run the macro "Plot All Z-Axis profiles"
 Plugins >> Macros >> Plot All Z-Axis Profiles
 The data can then be extracted for further processing and analysis.
+
+An example video file ("demo_video") is included. See "demo_data" folder.
