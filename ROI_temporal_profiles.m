@@ -1,6 +1,6 @@
 function ROI_temporal_profiles
 
-% This program calculates the following:
+% This program examines fluorescence activity of each ROI in a pre-determined time window and extracts the following:
 % 1. Peak amplitude (max value)
 % 2. Peak latency (time to peak)
 % 3. Dip amplitude (min value)
