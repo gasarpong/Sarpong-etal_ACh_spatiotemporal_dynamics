@@ -81,6 +81,24 @@ The following message will appear once the analysis is completed: "Analysis Comp
 An example dataset ("All_ROIs_clustering") is included. See "demo_data" folder.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Imaging data Analysis: ROI_temporal_profiles
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This program extracts ROI activity of a pre-determined time window and calculates the following:
+1. Peak amplitude (max value)
+2. Peak latency (time to peak)
+3. Dip amplitude (min value)
+4. Dip latency (time to dip)
+
+Note that the input data must contain only the dataset of the time window to be used for the analysis.
+
+Data from different tabs in the same excel file can be analyzed
+
+An example dataset ("ROI_activity") is included. See "demo_data" folder.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
