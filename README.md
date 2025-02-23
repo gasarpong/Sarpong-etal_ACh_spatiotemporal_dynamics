@@ -88,10 +88,10 @@ Imaging data Analysis: ROI_temporal_profiles
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This program examines fluorescence activity of each ROI in a pre-determined time window and extracts the following:
-1. Peak amplitude (max value)
+This program examines fluorescence activity of each ROI, in a pre-determined time window, and extracts the following:
+1. Peak amplitude (max activity)
 2. Peak latency (time to peak)
-3. Dip amplitude (min value)
+3. Dip amplitude (min activity)
 4. Dip latency (time to dip)
 
 Note that the input data must contain only the dataset of the time window to be used for the analysis.
