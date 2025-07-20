@@ -1,13 +1,14 @@
 function hierarchical_clustering_algorithm()
 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
- % Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
+ % Written by Kavinda Liyanagama, Okinawa Institute of Science and
+ % Technology (2025)
 
  % This program enables clustering of ROI data using the Hierarchical Clustering algorithm
 
  % Step 1: Dimensionality reduction is performed using Principal Component Analysis (PCA)
- % Step 2: Hierarchical clustering is applied on dimensionally reduced  data.
+ % Step 2: Hierarchical clustering is applied on dimensionally reduced data.
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
@@ -27,11 +28,11 @@ function hierarchical_clustering_algorithm()
 
  [type1,fileName1,ext1] = fileparts(fileName); sheetName = fileName1 ; % Take file name without extension 
  mkdir(strcat(fullfile(filePath,'Results/',sheetName,'HierarchicalClustering'))); % Create a new folder to save results
- outputFileName = strcat(sheetName ,'-HierarchicalClustered_Results.xlsx') ; % Create an output Excel file to save results
+ outputFileName = strcat(sheetName ,'-HierarChicalClustered_Results.xlsx') ; % Create an output Excel file to save results
 
  ROIData = readtable(fileName); % Extracted data from the selected sheet 
 
- % Arrange data for PCA to have each signal in a different row and each data point in a different column 
+ % Arrage data for PCA to have each signal in a different row and each data point in a different column 
 
  noOfROIs = size(ROIData,2);
  data = ROIData{:,1:noOfROIs };
@@ -53,6 +54,8 @@ function hierarchical_clustering_algorithm()
 
  pc1= score(:,1); % Data of Principal components 1
  pc2 =score(:,2); % Data of Principal components 2
+ pc3 =score(:,3); % Data of Principal components 3
+
 
  % Cluster data using  Hierarchical Clustering algorithm 
 
@@ -62,7 +65,7 @@ function hierarchical_clustering_algorithm()
  % Choose number of clusters 
   numClusters= noOfClusters ; % Number of clusters ( Decided using Elbow method) 
 
- % numClusters = 4; % Number of clusters ( User-defined number of clusters ) 
+  %numClusters = 4; % Number of clusters ( Decided by user ) 
 
 
  % Cluster data using  Hierarchical Clustering algorithm for decided number of clusters
@@ -96,6 +99,8 @@ function hierarchical_clustering_algorithm()
 
   hold off;
 
+  %grid on;
+
 
  % Visualize clusters (for 3D data)
 
@@ -115,7 +120,6 @@ function hierarchical_clustering_algorithm()
 
  clusteredData = [transpose(1:noOfROIs) clusterLabels];
  clusteredData = array2table ( clusteredData, 'VariableNames' , {'ROI Number','Cluster Number'})  ;  %  ROI number with its cluster number
- writetable(clusteredData,fullfile(filePath,'/','Results/',sheetName,'/','HierarchicalClustering/', outputFileName),'Sheet','Cluster Analysis' ,'Range','A1');
  writetable(clusteredData,fullfile(filePath,'/','Results/',sheetName,'/','HierarchicalClustering/', outputFileName),'Sheet','Cluster Analysis' ,'Range','A1');
 
  ROICountData = [clusterNumbers,ROICount]; %  ROI count data for each cluster
@@ -144,7 +148,7 @@ function hierarchical_clustering_algorithm()
  saveas(h3,strcat(fullfile(filePath,'Results/',sheetName,'/','HierarchicalClustering/'),figure3Name,'.fig')) 
 
 
- % Save generated figures in the List
+ % Save generated figures in sub-functions
 
  for fileIndex = 1:numel(figureList)
     fig = figureList(fileIndex); 
@@ -192,7 +196,43 @@ function hierarchical_clustering_algorithm()
  writematrix(paddedData,fullfile(filePath,'/','Results/',sheetName,'/','HierarchicalClustering/', outputFileName),'Sheet',"Clustered ROIs" ,'Range','A2');
  writematrix(clusterLabelArray, fullfile(filePath,'/','Results/',sheetName,'/','HierarchicalClustering/', outputFileName), 'Sheet',"Clustered ROIs" ,'Range','A1');
 
-msgbox('Analysis Completed!', 'Alert');
+
+% Plot all signals
+
+transposedData = transpose(data);
+
+figureAll = strcat(sheetName,"- All Signals");
+figure('Name',figureAll,'position',[160,150, 1400,1000]);
+
+
+hold on; % Keep all plots in the same figure
+for i = 1:size(transposedData, 1)
+    selectedColor = clusterLabels(i);
+
+   plot(1:size(transposedData,2), transposedData(i, :),'Color', customColors(selectedColor, :) );
+    
+end
+for i = 1:numClusters 
+   plotT1(i)= plot(nan, nan,'Color', customColors(i, :));  
+end
+
+
+% Add labels and title
+
+ setTitleAxis('All Signals Plotted Together','Data Point Number','Z-Score')
+ legend(plotT1, strcat("Cluster ",string (1:numClusters) ),'Location', 'best')
+
+ hold off;
+
+ [aveSignalEachCluster, groupAveFigure] = generateGroupFigures(data,transpose(clusterLabels),customColors) ; % Generate figures for each separate group
+
+ % Write data of average signal for each cluster type 
+
+ aveSignalEachCluster  = array2table (transpose(aveSignalEachCluster), 'VariableNames' , strcat("Cluster ",string(1:numClusters)))  ;  %  Average signal of each cluster
+ writetable(aveSignalEachCluster,fullfile(filePath,'/','Results/',sheetName,'/','HierarchicalClustering/', outputFileName),'Sheet',"Ave Signal" ,'Range','A1');
+
+ groupAveFigureName = strcat(sheetName,"- Group-Average Signal");
+ saveas(groupAveFigure,strcat(fullfile(filePath,'Results/',sheetName,'/','HierarchicalClustering/'),groupAveFigureName,'.fig')) 
 
 end
 
@@ -201,19 +241,50 @@ end
 function [linkageTree,noOfClusters,figureList,nameList] =  runHierarchicalClustering(reducedData,fileName)
 % This functions runs Hierarchical clustering on dimensionally reduced data
 
+% Step 1: Compute Distance Matrix
 
-% Step 1: Compute Total Within-Cluster Variance 
+% Compute pairwise distances (e.g., Euclidean)
+ distanceMatrix = pdist(reducedData,"euclidean");
 
+
+% Step 2: Perform Hierarchical Clustering
+
+% Use 'ward' linkage method (can also try ward,'single','average','complete' etc.)
+linkageTree = linkage(distanceMatrix,"complete");
+
+% Step 3: Plot the Dendrogram
+
+treeFigureName1= strcat(fileName,"- LinkageTree");
+figure1 =figure('Name',treeFigureName1,'position',[120,150, 1200,1200]);
+
+dendrogram(linkageTree,'ColorThreshold', 'default');
+title('Hierarchical Clustering Dendrogram (Dimensionality Reduced Data)');
+xlabel('Data Point Index');
+ylabel('Distance');
+
+
+% Plot the Dendrogram for all ROIs
+treeFigureName2= strcat(fileName,"- LinkageTree -All");
+figure2 =figure('Name',treeFigureName2,'position',[120,150, 1200,1200]);
+
+noOfROIs = size(reducedData,1);
+%dendrogram(linkageTree,noOfROIs,'ColorThreshold', 2);
+dendrogram(linkageTree,100,'ColorThreshold', 4);
+title('Hierarchical Clustering Dendrogram (Dimensionality Reduced Data)');
+xlabel('Data Point Index');
+ylabel('Distance');
+
+
+% Step 4: Compute Total Within-Cluster Variance
 maxClusters = 10; % Maximum number of clusters to evaluate
+%withinClusterSum = zeros(maxClusters, 1); % Store within-cluster sum of squares
+
 wcss = zeros(1,maxClusters);  % Array to store WCSS values
 
 % Loop to compute WCSS for each number of clusters
 for k = 1:maxClusters
-    % Perform hierarchical clustering 
-
-    % Computes the distance metric using the 'Euclidean' computing linkageTree using 'complete' criterion
-
-    Z = linkage(reducedData, 'complete','euclidean' );
+    % Perform hierarchical clustering (using 'complete' linkage)
+    Z = linkage(reducedData, 'complete', 'euclidean');
     
     % Assign points to clusters
     T = cluster(Z, 'maxclust', k);
@@ -223,41 +294,18 @@ for k = 1:maxClusters
 end
 
 
-% Step 2: Plot the Elbow Curve
+% Step 5: Plot the Elbow Curve
 
  elbowFigureName = strcat(fileName,"- Elbow Method");
- figure1=figure('Name',elbowFigureName,'position',[80,150, 700,500]);
+ figure3=figure('Name',elbowFigureName,'position',[80,150, 700,500]);
  hold on;
 
  noOfClusters= findElbow(1:maxClusters,transpose(wcss) );
 
- 
- % Step 3: Plot the Dendrogram 
-
- % Compute pairwise distances (e.g., Euclidean)
-  distanceMatrix = pdist(reducedData,"euclidean");
-
- % Using 'complete' linkage method (Other Methods: 'single','average','ward' etc.)
-  linkageTree = linkage(distanceMatrix,"complete");
-
- % Determine the threshold to form exactly 'numClusters' clusters
- % MATLAB merges clusters in the last N-1 steps for N clusters
-  threshold = linkageTree(end-noOfClusters+2, 3);
-
-  treeFigureName= strcat(fileName,"- LinkageTree");
-  figure2 =figure('Name',treeFigureName,'position',[120,150, 1200,1200]);
-
- % Display Dendrogram for 100 ROIs
-  dendrogram(linkageTree,100,'ColorThreshold', threshold);
-  title('Hierarchical Clustering Dendrogram (Dimensionality Reduced Data)');
-  xlabel('Data Point Index');
-  ylabel('Distance');
-
-
  % Pass parameters to save figures 
 
-  figureList = [figure1 figure2 ];
-  nameList = [elbowFigureName treeFigureName ];
+ figureList = [figure1 figure2 figure3];
+ nameList = [treeFigureName1 treeFigureName2 elbowFigureName];
 
 end 
 
@@ -304,6 +352,10 @@ for k = 1:numClusters
         50, customColors(k, :), 'o', 'LineWidth', 1.5, 'MarkerFaceColor', 'none', 'DisplayName', sprintf('Cluster %d', k));
 end
 
+% Plot the centroids
+%  n1 = scatter3(centroids(:, 1), centroids(:, 2), centroids(:, 3), 200, 'k', 'x', ...
+%     'LineWidth', 2, 'DisplayName', 'Centroids');
+
  xlabel('PC 1','fontweight','bold','FontName' , 'Arial' , 'fontsize' , 30);
  ylabel('PC 2','fontweight','bold','FontName' , 'Arial' , 'fontsize' , 30);
  zlabel('PC 3','fontweight','bold','FontName' , 'Arial' , 'fontsize' , 20);
@@ -333,7 +385,7 @@ end
 
 function [elbowIndex] = findElbow(x,y)
 
-% This function  is used to find elbow of curve
+% This function has been found from internet to find elbow of curve
 
   plot(x, y, 'o-', 'LineWidth', 2);
 
@@ -403,11 +455,102 @@ function setTitleAxis(plotTitle,xTitle, yTitle)
    % This function customizes plot view
    
     title(plotTitle)   
-    ylabel(yTitle,'fontweight','bold','FontName' , 'Times' , 'fontsize' , 12)
-    xlabel(xTitle,'fontweight','bold','FontName' , 'Times' , 'fontsize' , 12)  
+    ylabel(yTitle,'fontweight','bold','FontName' , 'Arial' , 'fontsize' , 12)
+    xlabel(xTitle,'fontweight','bold','FontName' , 'Arial' , 'fontsize' , 12)  
       
     ax = gca;
     set(gca,'fontweight','bold','fontsize',12); % Set axis ticks' style  
+end
+
+
+
+function [aveSignalEachGroup, groupAveFigure]= generateGroupFigures(data,groupType,customColors)
+
+% This function generates figures with plots for each cluster type separately
+
+% Parameters
+maxSubplots = 30; % Maximum subplots per figure (5x4 grid)
+figureWidth = 1300; % Width of the figure
+figureHeight = 1000; % Height of the figure
+uniqueGroups = unique(groupType); % Unique group types
+maxPlots = 20 ;  % Set a maximum plot limit for each cluster type to prevent program crashes caused by generating too many figures.
+
+aveSignalEachGroup =[];
+ROICountEachGroup =[];
+
+% Loop through each group
+for group = uniqueGroups
+
+    groupCols = find(groupType == group); % Find columns belonging to this group
+    numColsInGroup = length(groupCols); % Number of columns in this group
+
+    selectedDataAll = data(:,groupCols);
+    aveSignal = mean(selectedDataAll, 2);
+    aveSignalEachGroup(group,:) = aveSignal;
+    ROICountEachGroup(group) = numColsInGroup;
+
+    if (numColsInGroup > maxPlots)
+        numColsInGroup =maxPlots; % Set a maximum plot limit for each cluster type to prevent program crashes caused by generating too many figures.
+    end
+    
+    % Iterate over columns in the group
+    for idx = 1:numColsInGroup
+        col = groupCols(idx); % Current column index in data
+
+        % Determine figure and subplot position
+        figureIndex = ceil(idx / maxSubplots); % Current figure number for this group
+        subplotIndex = mod(idx-1, maxSubplots) + 1; % Subplot position in the figure
+        
+        % Open a new figure when starting a new batch of subplots
+        if subplotIndex == 1
+            figure % Create new figure
+            %figureName = 'Group '+ num2str(group) +' - Figure '+ num2str(figureIndex);
+
+            set(gcf, 'Position', [100, 100, figureWidth, figureHeight]); % Set figure size
+            sgtitle(['Cluster ' num2str(group) ' - Figure ' num2str(figureIndex)]); % Super title
+            pause(1);  % Pauses execution for 1 second to prevent crashing due to too many figures 
+        end
+        
+        % Add subplot to the current figure
+          subplot(6, 5, subplotIndex); % 5x4 grid
+          plot(data(:, col),'Color', customColors(group, :)); % Plot the column data
+          xlim([0 size(data(:, col),1)]);
+        
+          title("ROI "+ num2str(col)); % Title for each subplot
+           % xlabel('X-axis');
+           % ylabel('Y-axis');
+    end 
+end
+
+% Plot grouped-average signals
+figureGroupAve = strcat("Group-Average Signals");
+groupAveFigure =figure('Name',figureGroupAve,'position',[160,150, 800,1000]);
+
+hold on; % Keep all plots in the same figure
+
+noOfClusters = size(aveSignalEachGroup, 1);
+    
+for i = 1:noOfClusters 
+   plotT1(i)= plot(1:size(aveSignalEachGroup,2), aveSignalEachGroup(i, :),'Color', customColors(i, :)); 
+    
+end
+
+for i = 1:numel(plotT1)
+    %Add a new row to DataTip to show the DisplayName of the line
+     % plotT1(i).DataTipTemplate.DataTipRows(i) = dataTipTextRow( 'Cluster ',num2str(i));  
+
+    plotT1(i).DataTipTemplate.DataTipRows(i) = dataTipTextRow('Cluster' ,repmat({string(i)},size( plotT1(i).XData)));    
+end 
+
+setTitleAxis('Average Signal for each group','Data point number', 'Z-Score');
+
+
+% Customize legend names
+legend( strcat("Cluster ", string (1:size(aveSignalEachGroup, 1)), "  - (",string(ROICountEachGroup(1:size(aveSignalEachGroup, 1))), ")" ), 'Location', 'best');    
+hold off;
+
+msgbox('Analysis Completed!', 'Alert');
+
 end
 
 
@@ -419,9 +562,10 @@ customColors = [
     0, 1, 0;        % Green
     0, 0, 1;        % Blue
     0, 0, 0;        % Black
+    1, 0.65, 0;     % Orange
+    0, 1, 1;        % Cyan
     0, 0, 1;        % Blue
     1, 0, 0;        % Red
-    0, 1, 1;        % Cyan
     1, 0.65, 0;     % Orange
     0.5, 0.5, 0.5;  % Gray
     0.5, 0, 0;      % Dark Red
@@ -439,4 +583,3 @@ customColors = [
  ];
 
 end
-
