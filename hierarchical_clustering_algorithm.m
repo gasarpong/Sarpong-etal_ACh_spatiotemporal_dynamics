@@ -2,8 +2,7 @@ function hierarchical_clustering_algorithm()
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
- % Written by Kavinda Liyanagama, Okinawa Institute of Science and
- % Technology (2025)
+ % Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
 
  % This program enables clustering of ROI data using the Hierarchical Clustering algorithm
 
