@@ -5,14 +5,14 @@ Last update: 2025/7/21
 ## This README file contains instructions for installing and running the following programs. Example data files can be found in the demo_data folder.
 1.	Hierarchical Clustering
 2.	3D Spatial cluster mapping and visualization
-3.	ROI_temporal_profiles (Peak amplitude, peak latency, dip amplitude, dip latency)
+3.	ROI temporal profiles (Peak amplitude, peak latency, dip amplitude, dip latency)
 4.	Behavioral Data Analysis: Ymaze_Reward_noRewardTrialResults
 5.	Behavioral Data Analysis: findVelocityAndLickRate
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-## Hierarchical Clustering
+## 1) Hierarchical Clustering
 Program: hierarchical_clustering_algorithm.m
 
 This program enables clustering of imaged ROIs using a hierarchical clustering algorithm. 
@@ -78,18 +78,18 @@ An example dataset ("All_ROIs_clustering") is included. See "demo_data" folder.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-## 3D Spatial cluster mapping and visualization
-Program: 3D_Spatial_cluster_mapping_Reversal.m
+## 2) 3D Spatial cluster mapping and visualization
+Program: Spatial_cluster_mapping_Reversal.m
 
 This MATLAB script performs spatial mapping and visualization of region-of-interest (ROI) data across multiple imaging fields (sheets) from an Excel file. Each ROI is mapped onto a standardized 15×15 grid based on its numeric ID, with plotting based on response types and mean activity (e.g., mean z-score or cluster identity).
 
 ## Features
 
 - Automatic mapping of ROIs to anatomical space using metadata from each sheet.
-- Color-coded open-circle scatter plots based on response type (`Pause`, `Burstpause`, `Pauseburst`, `Others`, or 'NR increase', 'NR decrease', 'others').
+- Color-coded open-circle scatter plots based on response type ('NR increase', 'NR decrease', 'others').
 - Both 2D and 3D visualizations per sheet and as merged summary plots.
-- Flexible to include flipped coordinate systems (`Flip_AP`, `Flip_ML`), .
-- Automatically generates a `Results` folder with all plots and a summary Excel file.
+- Flexible to include flipped coordinate systems ('Flip_AP', 'Flip_ML'), .
+- Automatically generates a 'Results' folder with all plots and a summary Excel file.
 
 ## Requirements
 
@@ -98,11 +98,11 @@ This MATLAB script performs spatial mapping and visualization of region-of-inter
 
 ## Input File Format
 
-Provide a single `.xlsx` file with multiple sheets. Each sheet must contain the following columns:
-- `AP`, `ML`: Numeric metadata defining the center coordinates.
-- `Flip_AP`, `Flip_ML`: Strings indicating axis flipping (`Yes`/`No`).
-- Response columns (e.g., `Increase`, `Decrease`, etc.): ROI numbers.
-- Mean z-score columns: Must follow format `Mean z score_[response type]`, e.g., `Mean z score_Increase`.
+Provide a single '.xlsx' file with multiple sheets. Each sheet must contain the following columns:
+- 'AP', 'ML': Numeric metadata defining the center coordinates.
+- 'Flip_AP', 'Flip_ML': Strings indicating axis flipping ('Yes'/'No').
+- Response columns (e.g., 'Increase', 'Decrease', etc.): ROI numbers.
+- Mean z-score columns: Must follow format 'Mean z score_[response type]', e.g., 'Mean z score_Increase'.
 Each ROI number should be numeric, ranging from 1–225 per sheet, assuming a 15×15 grid.
 
 ## How to Use
@@ -139,7 +139,7 @@ Each ROI number should be numeric, ranging from 1–225 per sheet, assuming a 15
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-## ROI_temporal_profiles
+## 3) ROI temporal profiles
 Program: ROI_temporal_profiles.m
 
 This program examines fluorescence activity of each ROI, in a pre-determined time window, and extracts the following:
@@ -157,7 +157,7 @@ An example dataset ("ROI_activity") is included. See "demo_data" folder.
 
 
 ## Behavioral Data Analysis
-## 1. Program: Ymaze_Reward_noRewardTrialResults.m
+## 4) Program: Ymaze_Reward_noRewardTrialResults.m
 
 % This program analyzes Y-maze behavioral data and generates following plots to show:
       % 1) 'Reward' type or  'No Reward' type  
@@ -172,7 +172,7 @@ An example dataset ("ROI_activity") is included. See "demo_data" folder.
  
  % A Single file or multiple files can be analyzed simultaneously 
 
-## 2. Program: findVelocityAndLickRate.m
+## 5) Program: findVelocityAndLickRate.m
 
 % This program analyzes behavioral data and generates following plots:
       % 1) Velocity at each position  for 'Reward' type or  'No Reward' type 
