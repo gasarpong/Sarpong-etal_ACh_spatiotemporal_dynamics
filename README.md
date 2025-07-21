@@ -12,8 +12,7 @@ Last update: 2025/7/21
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-## Imaging data Analysis: Hierarchical Clustering
-
+## Hierarchical Clustering
 Program: hierarchical_clustering_algorithm.m
 
 This program enables clustering of imaged ROIs using a hierarchical clustering algorithm. 
@@ -77,10 +76,10 @@ The following message will appear once the analysis is completed: "Analysis Comp
 An example dataset ("All_ROIs_clustering") is included. See "demo_data" folder.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## 3D Spatial cluster mapping and visualization
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Program: 3D_Spatial_cluster_mapping_Reversal.m
 
 This MATLAB script performs spatial mapping and visualization of region-of-interest (ROI) data across multiple imaging fields (sheets) from an Excel file. Each ROI is mapped onto a standardized 15×15 grid based on its numeric ID, with plotting based on response types and mean activity (e.g., mean z-score or cluster identity).
 
@@ -140,9 +139,8 @@ Each ROI number should be numeric, ranging from 1–225 per sheet, assuming a 15
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-## Imaging data Analysis: ROI_temporal_profiles
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+## ROI_temporal_profiles
+Program: ROI_temporal_profiles.m
 
 This program examines fluorescence activity of each ROI, in a pre-determined time window, and extracts the following:
 1. Peak amplitude (max activity)
@@ -158,13 +156,10 @@ An example dataset ("ROI_activity") is included. See "demo_data" folder.
 
 
 
-
 ## Behavioral Data Analysis
-
 ## 1. Program: Ymaze_Reward_noRewardTrialResults.m
 
 % This program analyzes Y-maze behavioral data and generates following plots to show:
- 
       % 1) 'Reward' type or  'No Reward' type  
       % 2) Trial Duration for each trial
       % 3) Rewarded trial percentage for each session, 
@@ -179,12 +174,10 @@ An example dataset ("ROI_activity") is included. See "demo_data" folder.
 
 ## 2. Program: findVelocityAndLickRate.m
 
-% This program analyzes behavioral data and generates following plots: 
- 
+% This program analyzes behavioral data and generates following plots:
       % 1) Velocity at each position  for 'Reward' type or  'No Reward' type 
       % 2) LickRate at each position for 'Reward' type or  'No Reward' type (LickRate for reward period of 2s shows at the end)
       % 3) Each trial's Velocity/ LickRate results are written in output excel files 
-
       
  % A Single file or multiple files can be analyzed simultaneously 
  % All results are saved to an Output Excel file 
