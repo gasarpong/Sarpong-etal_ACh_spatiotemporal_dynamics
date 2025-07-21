@@ -1,6 +1,14 @@
-# Sarpong-etal_ACh_spatiotemporal_dynamics
+<img width="468" height="161" alt="image" src="https://github.com/user-attachments/assets/b9d443a3-09d0-4eda-abbc-5a6fb32ae623" /># Sarpong-etal_ACh_spatiotemporal_dynamics
 
-Last update: 2025/2/14
+Last update: 2025/7/21
+
+This README file contains instructions for installing and running the following program. Example data files can be found in the demo_data folder.
+1.	Hierarchical Clustering
+2.	3D Spatial cluster mapping and visualization
+3.	ROI_temporal_profiles (Peak amplitude, peak latency, dip amplitude, dip latency)
+4.	Behavioral Data Analysis: Ymaze_Reward_noRewardTrialResults
+5.	Behavioral Data Analysis: findVelocityAndLickRate
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -10,7 +18,7 @@ Imaging data Analysis: Hierarchical Clustering
 
 Program: hierarchical_clustering_algorithm.m
 
-This program enables clustering of subregions (or ROIs) using a Hierarchical Clustering algorithm. 
+This program enables clustering of imaged ROIs using a hierarchical clustering algorithm. 
 In brief, clustering is performed following the steps below:
 
 Step 1: Dimensionality reduction is performed using Principal Component Analysis (PCA)
