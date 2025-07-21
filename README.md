@@ -84,6 +84,68 @@ An example dataset ("All_ROIs_clustering") is included. See "demo_data" folder.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+3D Spatial cluster mapping and visualization
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This MATLAB script performs spatial mapping and visualization of region-of-interest (ROI) data across multiple imaging fields (sheets) from an Excel file. Each ROI is mapped onto a standardized 15×15 grid based on its numeric ID, with plotting based on response types and mean activity (e.g., mean z-score or cluster identity).
+
+## Features
+
+- Automatic mapping of ROIs to anatomical space using metadata from each sheet.
+- Color-coded open-circle scatter plots based on response type (`Pause`, `Burstpause`, `Pauseburst`, `Others`, or 'NR increase', 'NR decrease', 'others').
+- Both 2D and 3D visualizations per sheet and as merged summary plots.
+- Flexible to include flipped coordinate systems (`Flip_AP`, `Flip_ML`), .
+- Automatically generates a `Results` folder with all plots and a summary Excel file.
+
+## Requirements
+
+- MATLAB R2019b or later
+- No additional toolboxes required (standard MATLAB plotting and I/O functions used)
+
+## Input File Format
+
+Provide a single `.xlsx` file with multiple sheets. Each sheet must contain the following columns:
+- `AP`, `ML`: Numeric metadata defining the center coordinates.
+- `Flip_AP`, `Flip_ML`: Strings indicating axis flipping (`Yes`/`No`).
+- Response columns (e.g., `Increase`, `Decrease`, etc.): ROI numbers.
+- Mean z-score columns: Must follow format `Mean z score_[response type]`, e.g., `Mean z score_Increase`.
+Each ROI number should be numeric, ranging from 1–225 per sheet, assuming a 15×15 grid.
+
+## How to Use
+
+1. Open MATLAB and navigate to the folder containing the script.
+2. Run the script directly in the Command Window or Editor.
+3. Use the dialog box to select your `.xlsx` input file.
+4. The script will process each sheet, generate plots, and save results to:
+   ``` /path/to/your/data/Results/ ```
+5. Outputs include:
+   - 2D and 3D `.fig` files per sheet
+   - Merged summary 2D and 3D plots
+   - Summary Excel file `Summary_data.xlsx` with metadata from all sheets
+
+## Output Example
+
+- `ROI_Map_[sheetname].fig`: 2D spatial map
+- `ROI_3D_Map_[sheetname].fig`: 3D map of signal magnitude
+- `Merged_ROI_Map_2D.fig`: Combined 2D visualization
+- `Merged_ROI_Map_3D.fig`: Combined 3D visualization
+- `Summary_data.xlsx`: All ROI coordinates, response types, and values
+
+## Notes
+
+- ROIs are assigned grid positions relative to their numeric ID and sheet index.
+- Flipping metadata is used to mirror coordinates across ML or AP axes as needed.
+- Empty or malformed ROI entries are skipped with a warning.
+- Physical coordinates are centered using the recorded ML and AP metadata values extracted from the input sheets. 
+- The script accounts for potential axis inversions resulting from optical properties of the GRIN lens (e.g., mirroring or flipping across ML and AP axes) and image orientation effects introduced by our two-photon imaging system. 
+- Each ROI is visualized as an open circle plotted using scatter and scatter3 functions, with edge colors assigned to each functional category.
+- When the analysis is completed, a message box will appear with the following message:''Analysis complete. All figures and Excel file are saved in the Results folder.'').
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 Imaging data Analysis: ROI_temporal_profiles
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
