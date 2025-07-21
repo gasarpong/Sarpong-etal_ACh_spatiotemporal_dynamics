@@ -2,7 +2,7 @@ Sarpong-etal_ACh_spatiotemporal_dynamics
 
 Last update: 2025/7/21
 
-This README file contains instructions for installing and running the following program. Example data files can be found in the demo_data folder.
+## This README file contains instructions for installing and running the following programs. Example data files can be found in the demo_data folder.
 1.	Hierarchical Clustering
 2.	3D Spatial cluster mapping and visualization
 3.	ROI_temporal_profiles (Peak amplitude, peak latency, dip amplitude, dip latency)
@@ -12,9 +12,7 @@ This README file contains instructions for installing and running the following 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Imaging data Analysis: Hierarchical Clustering
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+## Imaging data Analysis: Hierarchical Clustering
 
 Program: hierarchical_clustering_algorithm.m
 
@@ -25,9 +23,7 @@ Step 1: Dimensionality reduction is performed using Principal Component Analysis
 
 Step 2: Hierarchical clustering is applied on dimensionally reduced data.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-1. Instructions for using the code:
+## Instructions for using the code:
 
 a. Ensure you have MATLAB installed.
 
@@ -39,9 +35,7 @@ d. Add the directory to your MATLAB path using:
 
 addpath(genpath('your_directory_path'));
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-2. Running the Code
+## Running the Code
 
 a. Open hierarchical_clustering_algorithm.m in MATLAB.
 
@@ -50,15 +44,11 @@ b. Click Run (or press F5).
 Follow the prompts in the command window and select your input data.
 Note that the input file must contain only the dataset of the desired time window of analysis.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-3. Output
+## Output
 
 The script generates output in the form of figures saved in an output file in the same folder as the input data.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-4. Troubleshooting
+## Troubleshooting
 
 If you encounter issues, ensure all dependencies are in the correct path.
 
@@ -66,9 +56,7 @@ Check for missing toolboxes using:
 
 ver
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-5. User-defined parameters:
+## User-defined parameters:
 
 a. Line 17: retainedVariance = 90; 
 Cumulative Variance threshold to decide retained number of Principal components 
@@ -90,9 +78,7 @@ An example dataset ("All_ROIs_clustering") is included. See "demo_data" folder.
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-3D Spatial cluster mapping and visualization
+## 3D Spatial cluster mapping and visualization
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -127,7 +113,7 @@ Each ROI number should be numeric, ranging from 1–225 per sheet, assuming a 15
 3. Use the dialog box to select your `.xlsx` input file.
 4. The script will process each sheet, generate plots, and save results to:
    ``` /path/to/your/data/Results/ ```
-5. Outputs include:
+## Outputs include:
    - 2D and 3D `.fig` files per sheet
    - Merged summary 2D and 3D plots
    - Summary Excel file `Summary_data.xlsx` with metadata from all sheets
@@ -154,7 +140,7 @@ Each ROI number should be numeric, ranging from 1–225 per sheet, assuming a 15
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Imaging data Analysis: ROI_temporal_profiles
+## Imaging data Analysis: ROI_temporal_profiles
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -172,13 +158,10 @@ An example dataset ("ROI_activity") is included. See "demo_data" folder.
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Behavioral Data Analysis
+## Behavioral Data Analysis
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-1. Program: Ymaze_Reward_noRewardTrialResults.m
+## 1. Program: Ymaze_Reward_noRewardTrialResults.m
 
 % This program analyzes Y-maze behavioral data and generates following plots to show:
  
@@ -194,7 +177,7 @@ Behavioral Data Analysis
  
  % A Single file or multiple files can be analyzed simultaneously 
 
-2. Program: findVelocityAndLickRate.m
+## 2. Program: findVelocityAndLickRate.m
 
 % This program analyzes behavioral data and generates following plots: 
  
