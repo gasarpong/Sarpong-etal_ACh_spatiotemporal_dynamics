@@ -13,10 +13,10 @@ Schindelin, J., Arganda-Carreras, I., Frise, E., Kaynig, V., Longair, M., Pietzs
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-For our dataset: Selection of individual subregions in the imaging field.
+For our dataset: Selection of individual ROIs in the imaging field.
 Due to the diffuse expression of iAChSnFR sensor (on somata and neuropil), the field of view (FOV) was overlaid with equally sized grids (~50 μm x ~50 μm)for selection and trace extraction. 
-Using this procedure, we divided the FOV into 15x15 grids and obtained a total of 225 individual subregions in each mouse. 
-The fluorescence trace of individual subregions over time was calculated by averaging the corresponding pixel values within each specified region. Time-series traces of all processed movies were extracted.
+Using this procedure, we divided the FOV into 15x15 grids and obtained a total of 225 individual ROIs in each mouse. 
+The fluorescence trace of individual ROIs over time was calculated by averaging the corresponding pixel values within each specified region. Time-series traces of all processed movies were extracted.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
