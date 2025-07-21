@@ -1,4 +1,4 @@
-<img width="468" height="161" alt="image" src="https://github.com/user-attachments/assets/b9d443a3-09d0-4eda-abbc-5a6fb32ae623" /># Sarpong-etal_ACh_spatiotemporal_dynamics
+Sarpong-etal_ACh_spatiotemporal_dynamics
 
 Last update: 2025/7/21
 
