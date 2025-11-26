@@ -1,4 +1,4 @@
- function Ymaze_Reward_noRewardTrialResults_M1()
+ function Ymaze_Reward_noRewardTrialResults()
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
  
@@ -14,7 +14,7 @@
       % 6) Lick occurrences during No_Reward_Time  ± lickDuration (3s etc) period 
       % 7) Lick occurrences during first 5s of each trial 
       % 8) RewardRate for reward/noReward trials is computed
-      % 9 ) Lick Rate for each 100ms during Reward_Time  ± lickDuration (3s) is computed
+      % 9) Lick Rate for each 100ms during Reward_Time  ± lickDuration (3s) is computed
  
  % A single file or multiple files can be analyzed simultaneously with this program.
  % All results are saved to output Excel files.
