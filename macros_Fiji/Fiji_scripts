@@ -4,14 +4,14 @@ Please refer to the README file in this folder for instructions on how to instal
 
 macro "Split Image Into ROIs" {
    
-   // This macro splits an imaging field into squares or nxn tiles, where n is chosen by the user.
+	// This macro splits an imaging field into squares or nxn tiles, where n is chosen by the user.
  
-       ROInum = roiManager("count");
+    ROInum = roiManager("count");
 	
-        if (ROInum> 0) {
+    if (ROInum> 0) {
 	  roiManager("Deselect");
 	  roiManager("Delete");
-        }
+    }
 
 	Dialog.create("Input Dialog");
 	n=10;
