@@ -2,9 +2,9 @@
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
  
- % Written by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
+ % Developed by Kavinda Liyanagama, Okinawa Institute of Science and Technology (2025)
 
- % This program analyzes data and generates the following plots 
+ % This program analyzes behavioral data and generates the following plots 
  
       % 1) Velocity at each position  for 'Reward' type or  'No Reward' type , 
       % 2) LickRate at each position for 'Reward' type or  'No Reward' type (LickRate for reward period of 2s shows at the end )
@@ -12,7 +12,7 @@
 
       
  % A Single file or multiple simultaneous files can be analyzed with ths program.
- % All results are saved to output Excel files.
+ % All analysis results are saved to output Excel files.
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   close All
